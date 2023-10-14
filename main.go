@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"os"
 
+	engine "github.com/OrignalDCAM/web-service-gin/router"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
@@ -81,9 +82,11 @@ func main() {
 		log.Fatal(pingErr)
 	}
 
-	router := gin.Default()
-	router.GET("/games", getAllGames)
-	router.GET("/game/:id", getGameByID)
+	engine.Run("8001")
 
-	router.Run("localhost:8001")
+	// router := gin.Default()
+	// router.GET("/games", getAllGames)
+	// router.GET("/game/:id", getGameByID)
+
+	// router.Run("localhost:8001")
 }
