@@ -21,6 +21,10 @@ func Run(Port string) {
 		handler.GetGameByID(c, database.GetDB())
 	})
 
+	engine.POST("/games", func(c *gin.Context) {
+		handler.CreateNewGame(c, database.GetDB())
+	})
+
 	engine.Use(gin.Recovery())
 
 	fmt.Println(engine.Run(fmt.Sprintf(":%s", Port)))
