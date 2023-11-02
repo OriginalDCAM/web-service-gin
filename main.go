@@ -1,19 +1,19 @@
 package main
 
 import (
+	"os"
+
 	engine "github.com/OrignalDCAM/web-service-gin/router"
 	_ "github.com/lib/pq"
+
+	"github.com/joho/godotenv"
 )
 
 
 
 
 func main() {
-	engine.Run("8001")
+	godotenv.Load()
 
-	// router := gin.Default()
-	// router.GET("/games", getAllGames)
-	// router.GET("/game/:id", getGameByID)
-
-	// router.Run("localhost:8001")
+	engine.Run(os.Getenv("WEB_API_PORT"))
 }
